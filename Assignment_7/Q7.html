@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Largest Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+            padding: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            width: 300px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Find the Second Largest Number</h1>
+    <input type="text" id="numArray" placeholder="Enter numbers (comma separated)">
+    <button onclick="findSecondLargest()">Find Second Largest</button>
+    <div id="result"></div>
+
+    <script>
+        function findSecondLargest() {
+            const input = document.getElementById('numArray').value;
+            const arr = input.split(',').map(num => parseInt(num.trim())).sort((a, b) => b - a);
+            const secondLargest = arr[1];
+
+            if (arr.length < 2) {
+                document.getElementById('result').innerText = "Please enter at least two numbers.";
+            } else {
+                document.getElementById('result').innerText = `Second Largest Number: ${secondLargest}`;
+            }
+        }
+    </script>
+</body>
+</html>

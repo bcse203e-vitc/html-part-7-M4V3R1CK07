@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Duplicates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+            padding: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            width: 300px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Find Duplicates in an Array</h1>
+    <input type="text" id="arrayInput" placeholder="Enter array (comma separated)">
+    <button onclick="findDuplicates()">Find Duplicates</button>
+    <div id="result"></div>
+
+    <script>
+        function findDuplicates() {
+            const input = document.getElementById('arrayInput').value;
+            const arr = input.split(',').map(num => num.trim());
+            const duplicates = [];
+            const unique = [];
+
+            arr.forEach(item => {
+                if (unique.includes(item) && !duplicates.includes(item)) {
+                    duplicates.push(item);
+                } else {
+                    unique.push(item);
+                }
+            });
+
+            if (duplicates.length > 0) {
+                document.getElementById('result').innerText = `Duplicates: ${duplicates.join(', ')}`;
+            } else {
+                document.getElementById('result').innerText = "No duplicates found.";
+            }
+        }
+    </script>
+</body>
+</html>
