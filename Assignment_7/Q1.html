@@ -1,77 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guess the Number Game</title>
+    <script>
+      const targetNumber = Math.floor(Math.random() * 100) + 1;
+      let attempts = 0;
+
+      function checkGuess() {
+        const userGuess = document.getElementById("guess").value;
+        const hint = document.getElementById("hint");
+        attempts++;
+
+        if (userGuess == targetNumber) {
+          hint.textContent = `Congratulations! You guessed the number in ${attempts} attempts.`;
+          hint.style.color = "green";
+        } else if (userGuess > targetNumber) {
+          hint.textContent = "Too high! Try again.";
+          hint.style.color = "red";
+        } else if (userGuess < targetNumber) {
+          hint.textContent = "Too low! Try again.";
+          hint.style.color = "red";
+        }
+
+        document.getElementById(
+          "attempts"
+        ).textContent = `Attempts: ${attempts}/5`;
+
+        if (attempts >= 5) {
+          hint.textContent = `Game over! The correct number was ${targetNumber}.`;
+          hint.style.color = "black";
+          document.querySelector("button").disabled = true;
+        }
+      }
+    </script>
     <style>
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-             -webkit-appearance: none;
-            margin: 0;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f7f7f7;
-            padding: 50px;
-        }
-        input, button {
-            padding: 10px;
-            margin: 10px;
-            font-size: 16px;
-            width: 200px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        #hint {
-            font-size: 18px;
-            color: #555;
-        }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f7f7f7;
+        padding: 50px;
+      }
+      input,
+      button {
+        padding: 10px;
+        margin: 10px;
+        font-size: 16px;
+        width: 200px;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      #hint {
+        font-size: 18px;
+        color: #555;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Guess the Number Game</h1>
     <p>Guess the number between 1 and 100!</p>
-    <input type="number" id="guess" min="1" max="100" placeholder="Enter a number">
+    <input
+      type="number"
+      id="guess"
+      min="1"
+      max="100"
+      placeholder="Enter a number"
+    />
     <button onclick="checkGuess()">Guess</button>
     <p id="hint"></p>
     <p id="attempts">Attempts: 0/5</p>
-    
-    <script>
-        const targetNumber = Math.floor(Math.random() * 100) + 1;
-        let attempts = 0;
-
-        function checkGuess() {
-            const userGuess = document.getElementById('guess').value;
-            const hint = document.getElementById('hint');
-            attempts++;
-
-            if (userGuess == targetNumber) {
-                hint.textContent = `Congratulations! You guessed the number in ${attempts} attempts.`;
-                hint.style.color = 'green';
-            } else if (userGuess > targetNumber) {
-                hint.textContent = "Too high! Try again.";
-                hint.style.color = 'red';
-            } else if (userGuess < targetNumber) {
-                hint.textContent = "Too low! Try again.";
-                hint.style.color = 'red';
-            }
-
-            document.getElementById('attempts').textContent = `Attempts: ${attempts}/5`;
-
-            if (attempts >= 5) {
-                hint.textContent = `Game over! The correct number was ${targetNumber}.`;
-                hint.style.color = 'black';
-                document.querySelector('button').disabled = true;
-            }
-        }
-    </script>
-</body>
+  </body>
 </html>

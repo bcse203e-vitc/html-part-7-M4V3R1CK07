@@ -4,6 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Calculator</title>
+    <script>
+      let screen = document.getElementById("screen");
+      let expression = "";
+
+      function appendNumber(num) {
+        if (screen.innerText === "0") {
+          screen.innerText = num;
+        } else {
+          screen.innerText += num;
+        }
+        expression += num;
+      }
+
+      function appendOperator(op) {
+        screen.innerText += " " + op + " ";
+        expression += op;
+      }
+
+      function clearScreen() {
+        screen.innerText = "0";
+        expression = "";
+      }
+
+      function calculate() {
+        try {
+          screen.innerText = eval(expression);
+          expression = screen.innerText;
+        } catch {
+          screen.innerText = "Error";
+          expression = "";
+        }
+      }
+    </script>
     <style>
       body {
         display: flex;
@@ -89,39 +122,5 @@
         </div>
       </div>
     </div>
-
-    <script>
-      let screen = document.getElementById("screen");
-      let expression = "";
-
-      function appendNumber(num) {
-        if (screen.innerText === "0") {
-          screen.innerText = num;
-        } else {
-          screen.innerText += num;
-        }
-        expression += num;
-      }
-
-      function appendOperator(op) {
-        screen.innerText += " " + op + " ";
-        expression += op;
-      }
-
-      function clearScreen() {
-        screen.innerText = "0";
-        expression = "";
-      }
-
-      function calculate() {
-        try {
-          screen.innerText = eval(expression);
-          expression = screen.innerText;
-        } catch {
-          screen.innerText = "Error";
-          expression = "";
-        }
-      }
-    </script>
   </body>
 </html>

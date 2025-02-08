@@ -1,79 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sort Array Without sort()</title>
+    <script>
+      function sortArray() {
+        const input = document.getElementById("unsortedArray").value;
+        const arr = input.split(",").map((num) => parseInt(num.trim()));
+
+        // Bubble sort implementation for ascending order
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+              let temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = temp;
+            }
+          }
+        }
+
+        document.getElementById(
+          "result"
+        ).innerText = `Sorted Array (Ascending): ${arr.join(", ")}`;
+      }
+
+      function sortArrayDescending() {
+        const input = document.getElementById("unsortedArray").value;
+        const arr = input.split(",").map((num) => parseInt(num.trim()));
+
+        // Bubble sort implementation for descending order
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length - 1; j++) {
+            if (arr[j] < arr[j + 1]) {
+              let temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = temp;
+            }
+          }
+        }
+
+        document.getElementById(
+          "result"
+        ).innerText = `Sorted Array (Descending): ${arr.join(", ")}`;
+      }
+    </script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f7f7f7;
-            padding: 50px;
-        }
-        input, button {
-            padding: 10px;
-            margin: 10px;
-            font-size: 16px;
-            width: 300px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        #result {
-            font-size: 18px;
-            margin-top: 20px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f7f7f7;
+        padding: 50px;
+      }
+      input,
+      button {
+        padding: 10px;
+        margin: 10px;
+        font-size: 16px;
+        width: 300px;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      #result {
+        font-size: 18px;
+        margin-top: 20px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Sort Array Without Using sort()</h1>
-    <input type="text" id="unsortedArray" placeholder="Enter numbers (comma separated)">
+    <input
+      type="text"
+      id="unsortedArray"
+      placeholder="Enter numbers (comma separated)"
+    />
     <button onclick="sortArray()">Sort Ascending</button>
     <button onclick="sortArrayDescending()">Sort Descending</button>
     <div id="result"></div>
-
-    <script>
-        function sortArray() {
-            const input = document.getElementById('unsortedArray').value;
-            const arr = input.split(',').map(num => parseInt(num.trim()));
-
-            // Bubble sort implementation for ascending order
-            for (let i = 0; i < arr.length; i++) {
-                for (let j = 0; j < arr.length - 1; j++) {
-                    if (arr[j] > arr[j + 1]) {
-                        let temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-                    }
-                }
-            }
-
-            document.getElementById('result').innerText = `Sorted Array (Ascending): ${arr.join(', ')}`;
-        }
-
-        function sortArrayDescending() {
-            const input = document.getElementById('unsortedArray').value;
-            const arr = input.split(',').map(num => parseInt(num.trim()));
-
-            // Bubble sort implementation for descending order
-            for (let i = 0; i < arr.length; i++) {
-                for (let j = 0; j < arr.length - 1; j++) {
-                    if (arr[j] < arr[j + 1]) {
-                        let temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-                    }
-                }
-            }
-
-            document.getElementById('result').innerText = `Sorted Array (Descending): ${arr.join(', ')}`;
-        }
-    </script>
-</body>
+  </body>
 </html>
